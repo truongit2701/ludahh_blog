@@ -1,0 +1,17 @@
+.login {
+   height: 90vh;
+   justify-content: center;
+   display: flex;
+   align-items: center;
+   width: 100%;
+}
+
+.login_form {
+   display: flex;
+   flex-direction: column;
+   gap: 4px;
+}
+
+.login_form input {
+   padding: 2px 8px;
+}

@@ -1,0 +1,39 @@
+.write {
+   padding: 5px 15px;
+   gap: 15px;
+}
+
+.write_button_preview {
+   margin-bottom: 10px;
+}
+
+.write_form {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.write_preview {
+}
+
+.write_banner {
+   display: flex;
+   align-items: center;
+}
+
+.write_banner img {
+   object-fit: cover;
+}
+
+/* tag */
+.tag-active {
+   background-color: gray;
+}
+
+/* category_tag */
+.category_tag {
+   display: flex;
+   justify-content: space-between;
+   padding: 10px;
+}

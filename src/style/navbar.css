@@ -1,0 +1,31 @@
+.navbar {
+   display: flex;
+   justify-content: space-between;
+   padding: 10px 15px;
+   align-items: center;
+   border-bottom: 1px solid #bcb8b8;
+}
+
+.navbar div {
+   /* flex: 1; */
+}
+
+.navbar a {
+   display: inline-block;
+}
+
+.navbar .navbar__menu {
+   display: flex;
+   gap: 10px;
+   justify-content: flex-end;
+}
+
+.navbar .navbar__menu a:hover {
+   /* color: #fff;
+   font-weight: 600; */
+}
+
+.navbar__logo {
+   font-size: 20px;
+   font-weight: 600;
+}

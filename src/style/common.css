@@ -1,0 +1,29 @@
+.error-cpn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+
+td.content {
+   max-width: 500px; /* Đặt chiều rộng tối đa của cột */
+   white-space: nowrap; /* Ngăn không cho nội dung xuống dòng */
+   overflow: hidden; /* Ẩn phần nội dung vượt quá chiều rộng của cột */
+   text-overflow: ellipsis; /* Hiển thị dấu "..." khi nội dung vượt quá chiều rộng */
+}
+
+table {
+   font-family: arial, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+}
+
+td,
+th {
+   text-align: left;
+   padding: 8px;
+}
+
+tr:nth-child(even) {
+   background-color: #dddddd;
+}

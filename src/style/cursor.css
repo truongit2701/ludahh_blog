@@ -1,0 +1,25 @@
+.cursor1 {
+   position: fixed;
+   width: 40px;
+   height: 40px;
+   border: 1px solid #c6c6c6;
+   border-radius: 50%;
+   left: 0;
+   top: 0;
+   transform: translate(-50%, -50%);
+   pointer-events: none;
+   transition: 0.1s;
+}
+
+.cursor2 {
+   position: fixed;
+   width: 4px;
+   height: 4px;
+   border: 1px solid #c6c6c6;
+   border-radius: 50%;
+   left: 0;
+   top: 0;
+   transform: translate(-50%, -50%);
+   pointer-events: none;
+   transition: 0.12s;
+}

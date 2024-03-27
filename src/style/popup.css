@@ -1,0 +1,56 @@
+.popup {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0;
+   visibility: hidden;
+   transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+   overflow-y: auto; /* Thay đổi từ scroll thành auto */
+}
+
+.popup.open {
+   opacity: 1;
+   visibility: visible;
+   transition-delay: 0s;
+   z-index: 99;
+}
+
+.popup-content {
+   background-color: #fff;
+   padding: 20px;
+   border-radius: 4px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+   width: 95%;
+   max-height: 90%; /* Thêm thuộc tính max-height để giới hạn chiều cao tối đa */
+   overflow-y: auto; /* Thêm thuộc tính overflow-y: auto để cho phép cuộn nội dung trong popup */
+}
+
+.popup-body {
+   margin-bottom: 10px;
+}
+
+.popup-btn {
+   border: none;
+   padding: 8px 16px;
+   border-radius: 4px;
+   cursor: pointer;
+   font-weight: 700;
+   color: #fff;
+}
+
+.popup-close:hover {
+   background-color: #aaa;
+}
+
+.popup-close {
+   position: absolute;
+   right: 30px;
+   top: 30px;
+   cursor: pointer;
+}
