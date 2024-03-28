@@ -30,6 +30,12 @@ function App() {
       if (pathname === '/') navigate('/news');
    }, [pathname]);
 
+   var DEBUG = process.env.DEBUG;
+   // ENABLE/DISABLE Console Logs
+   if (!DEBUG) {
+      console.log = function () {};
+   }
+
    return (
       <HelmetProvider>
          <QueryClientProvider client={queryClient}>

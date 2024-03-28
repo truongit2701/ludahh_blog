@@ -12,7 +12,6 @@ import Error from '../components/common/Error';
 
 const MainPost = () => {
    const { id } = useParams();
-   console.log('♥️ ~ MainPost ~ id:', id);
 
    const {
       isLoading: postLoading,
