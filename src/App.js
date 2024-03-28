@@ -28,8 +28,8 @@ function App() {
             {/* <Example /> */}
             <Navbar auth={auth} />
             <Routes>
-               <Route index element={<MainPage />} />
-               <Route path="p/:id" element={<MainPost />} />
+               <Route path="/news" element={<MainPage />} />
+               <Route path="/p/:id" element={<MainPost />} />
                <Route path="/login" element={<Login />} />
                <Route path="/register" element={<Register />} />
                <Route path="/write" element={<Write />} />

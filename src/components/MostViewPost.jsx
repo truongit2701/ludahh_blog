@@ -8,7 +8,7 @@ import { formatDDMMYYYYHHMM } from '../common';
 const MostViewPost = ({ post }) => {
    const navigate = useNavigate();
    return (
-      <div className="most_view_item" onClick={() => navigate(`p/${post.id}`)}>
+      <div className="most_view_item" onClick={() => navigate(`/p/${post.id}`)}>
          <img
             src={post.banner}
             width={70}
