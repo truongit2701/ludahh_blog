@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/truongit2701/ludahh_blog.git/static/css/main.c53e3153.css",
+    "main.js": "/truongit2701/ludahh_blog.git/static/js/main.17a98a0a.js",
+    "static/js/453.fcbfcfec.chunk.js": "/truongit2701/ludahh_blog.git/static/js/453.fcbfcfec.chunk.js",
+    "index.html": "/truongit2701/ludahh_blog.git/index.html",
+    "main.c53e3153.css.map": "/truongit2701/ludahh_blog.git/static/css/main.c53e3153.css.map",
+    "main.17a98a0a.js.map": "/truongit2701/ludahh_blog.git/static/js/main.17a98a0a.js.map",
+    "453.fcbfcfec.chunk.js.map": "/truongit2701/ludahh_blog.git/static/js/453.fcbfcfec.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c53e3153.css",
+    "static/js/main.17a98a0a.js"
+  ]
+}
