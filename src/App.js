@@ -1,29 +1,22 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
-import {
-   Navigate,
-   Route,
-   Routes,
-   useLocation,
-   useNavigate,
-} from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import NotFound from './components/common/NotFound';
 import Category from './page/Category';
 import Login from './page/Login';
 import MainPage from './page/MainPage';
 import MainPost from './page/MainPost';
+import PostManage from './page/Manage/Post';
 import User from './page/Manage/User';
 import Register from './page/Register';
 import Write from './page/Write';
-import PostManage from './page/Manage/Post';
-import Example from './components/Example';
-import { HelmetProvider } from 'react-helmet-async';
-import NotFound from './components/common/NotFound';
-import { useEffect } from 'react';
 
 function App() {
    const auth = useSelector((state) => state.auth.login.user);
