@@ -16,6 +16,7 @@ import Write from './page/Write';
 import PostManage from './page/Manage/Post';
 import Example from './components/Example';
 import { HelmetProvider } from 'react-helmet-async';
+import NotFound from './components/common/NotFound';
 
 function App() {
    const auth = useSelector((state) => state.auth.login.user);
@@ -36,6 +37,7 @@ function App() {
                <Route path="/category" element={<Category />} />
                <Route path="/user-manage" element={<User />} />
                <Route path="/post-manage" element={<PostManage />} />
+               <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
          </QueryClientProvider>

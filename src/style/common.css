@@ -27,3 +27,10 @@ th {
 tr:nth-child(even) {
    background-color: #dddddd;
 }
+
+.not_found_cpn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
