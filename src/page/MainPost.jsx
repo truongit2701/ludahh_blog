@@ -8,24 +8,40 @@ import { getCategoryTag } from '../services/write';
 import '../style/mainpage.css';
 import Post from './Post';
 import { PAG_TAKE_BIGGEST } from '../common/enum';
+import Error from '../components/common/Error';
 
 const MainPost = () => {
    const { id } = useParams();
 
-   const { isLoading: postLoading, data: detailPost } = useQuery({
+   const {
+      isLoading: postLoading,
+      error: detailPostError,
+      data: detailPost,
+   } = useQuery({
       queryKey: ['detailPost', id],
       queryFn: () => fetchDetailPost(id),
    });
 
-   const { isLoading: mostViewLoading, data: listPostMostView } = useQuery({
+   const {
+      isLoading: mostViewLoading,
+      error: mostViewLoadingError,
+      data: listPostMostView,
+   } = useQuery({
       queryKey: ['listPostMostView'],
       queryFn: () => fetchListPostMostView(1, PAG_TAKE_BIGGEST),
    });
 
-   const { isLoading: tagCategoryLoading, data: listTagCategory } = useQuery({
+   const {
+      isLoading: tagCategoryLoading,
+      error: tagCategoryLoadingError,
+      data: listTagCategory,
+   } = useQuery({
       queryKey: ['listTagCategory'],
       queryFn: getCategoryTag,
    });
+   if (detailPostError || mostViewLoadingError || tagCategoryLoadingError)
+      return <Error />;
+
    return (
       <div>
          <div className="content">
@@ -46,7 +62,7 @@ const MainPost = () => {
                      <div>Loading...</div>
                   ) : (
                      listPostMostView.data
-                        .filter((post) => post.id !== id)
+                        .filter((post) => post.id !== +id)
                         .map((post) => (
                            <MostViewPost key={post.id} post={post} />
                         ))
