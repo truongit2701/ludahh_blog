@@ -5,6 +5,6 @@ export async function fetchListTag() {
       const response = await axios.get('category');
       return response;
    } catch (err) {
-      console.log('♥️ ~ fetchListTag ~ err:', err);
+      throw err;
    }
 }

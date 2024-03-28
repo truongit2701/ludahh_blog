@@ -20,7 +20,6 @@ export async function createPost({
       return response;
    } catch (err) {
       setError(err.message);
-      console.log('♥️ ~ createPost ~ err:', err);
    }
 }
 
@@ -29,7 +28,6 @@ export async function getCategoryTag() {
       const response = await axios.get('category');
       return response.data;
    } catch (err) {
-      console.log('♥️ ~ getCategoryTag ~ err:', err);
       throw err;
    }
 }

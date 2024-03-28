@@ -8,7 +8,6 @@ export async function fetchComments(id, currentPage, limit) {
 
       return response.data;
    } catch (err) {
-      console.log('♥️ ~ fetchComments ~ err:', err);
       throw err;
    }
 }
@@ -18,9 +17,7 @@ export async function fetchChildComments(parent_id) {
       const response = await axios.get(`comment/${parent_id}/child-comments`);
 
       return response.data;
-   } catch (err) {
-      console.log('♥️ ~ fetchComments ~ err:', err);
-   }
+   } catch (err) {}
 }
 
 export async function createComment(content, post_id) {
@@ -29,7 +26,6 @@ export async function createComment(content, post_id) {
 
       return response.data;
    } catch (err) {
-      console.log('♥️ ~ createComment ~ err:', err);
       throw err;
    }
 }
@@ -44,7 +40,6 @@ export async function replyComment(content, parent_id, post_id) {
 
       return response.data;
    } catch (err) {
-      console.log('♥️ ~ createComment ~ err:', err);
       throw err;
    }
 }

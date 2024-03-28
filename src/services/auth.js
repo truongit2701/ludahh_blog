@@ -12,7 +12,6 @@ export const register = async (info, setFechting) => {
       setFechting(false);
       return res;
    } catch (err) {
-      console.log('♥️ ~ register ~ err:', err);
       setFechting(false);
    }
 };
@@ -38,7 +37,6 @@ export const login = async (
       }
       return res;
    } catch (err) {
-      console.log('♥️ ~ login ~ err:', err);
       setError(err.message);
       setFechting(false);
    }
@@ -49,6 +47,6 @@ export const fetchUser = async () => {
       const res = await axios.get('user');
       if (res.status === 200) return res.data;
    } catch (error) {
-      console.log('♥️ ~ fetchUser ~ error:', error);
+      throw error;
    }
 };

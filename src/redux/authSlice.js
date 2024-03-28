@@ -10,7 +10,6 @@ const authSlice = createSlice({
    reducers: {
       loginSuccess: (state, action) => {
          state.login.user = action.payload;
-         console.log('action.payload:', action.payload);
          localStorage.setItem('ludahh_auth', JSON.stringify(action.payload));
       },
       logout: (state) => {

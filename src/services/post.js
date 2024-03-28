@@ -27,7 +27,6 @@ export async function fetchDetailPost(id) {
 
       return response.data;
    } catch (err) {
-      console.log('♥️ ~ fetchDetailPost ~ err:', err);
       throw err;
    }
 }
@@ -49,7 +48,6 @@ export async function turnOffPost(id) {
       }
       return response.data;
    } catch (err) {
-      console.log('♥️ ~ turnOffPost ~ err:', err);
       throw err;
    }
 }
