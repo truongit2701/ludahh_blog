@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
-// import ReactHtmlParser from 'react-html-parser';
 import Preview from '../components/Preview';
 import Banner from '../components/Write/Banner';
 import CategoryTag from '../components/Write/CategoryTag';
