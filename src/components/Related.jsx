@@ -15,7 +15,7 @@ const Related = ({ listRelated }) => {
                      <div
                         className="related_item"
                         key={postItem.id}
-                        onClick={() => navigate(`/${postItem.id}`)}
+                        onClick={() => navigate(`p/${postItem.id}`)}
                      >
                         <img
                            src={postItem.banner}

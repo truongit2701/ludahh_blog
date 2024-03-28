@@ -50,7 +50,7 @@ const MainPage = () => {
                   <div
                      key={post.id}
                      className="post_item"
-                     onClick={() => navigate(`/${post.id}`)}
+                     onClick={() => navigate(`p/${post.id}`)}
                   >
                      <div className="post_item_img">
                         <img
