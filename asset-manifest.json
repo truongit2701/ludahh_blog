@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ludahh_blog/static/css/main.c53e3153.css",
-    "main.js": "/ludahh_blog/static/js/main.12ce9f77.js",
+    "main.css": "/ludahh_blog/static/css/main.d65847ed.css",
+    "main.js": "/ludahh_blog/static/js/main.fb43a6bc.js",
     "static/js/453.fcbfcfec.chunk.js": "/ludahh_blog/static/js/453.fcbfcfec.chunk.js",
     "index.html": "/ludahh_blog/index.html",
-    "main.c53e3153.css.map": "/ludahh_blog/static/css/main.c53e3153.css.map",
-    "main.12ce9f77.js.map": "/ludahh_blog/static/js/main.12ce9f77.js.map",
+    "main.d65847ed.css.map": "/ludahh_blog/static/css/main.d65847ed.css.map",
+    "main.fb43a6bc.js.map": "/ludahh_blog/static/js/main.fb43a6bc.js.map",
     "453.fcbfcfec.chunk.js.map": "/ludahh_blog/static/js/453.fcbfcfec.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c53e3153.css",
-    "static/js/main.12ce9f77.js"
+    "static/css/main.d65847ed.css",
+    "static/js/main.fb43a6bc.js"
   ]
 }
