@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import { IoLogOutOutline } from 'react-icons/io5';
 import '../style/navbar.css';
@@ -8,8 +8,10 @@ import { useDispatch } from 'react-redux';
 
 const Navbar = ({ auth }) => {
    const dispatch = useDispatch();
+   const navigate = useNavigate();
    const handleLogout = () => {
       dispatch(logout());
+      navigate('/news');
    };
    return (
       <div>

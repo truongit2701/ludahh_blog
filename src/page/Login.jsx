@@ -14,7 +14,7 @@ const Login = () => {
    const dispatch = useDispatch();
 
    useEffect(() => {
-      if (auth) navigate('/');
+      if (auth) navigate('/news');
 
       return;
    }, [auth, navigate]);

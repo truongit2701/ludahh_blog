@@ -1,6 +1,12 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import {
+   Navigate,
+   Route,
+   Routes,
+   useLocation,
+   useNavigate,
+} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -17,10 +23,19 @@ import PostManage from './page/Manage/Post';
 import Example from './components/Example';
 import { HelmetProvider } from 'react-helmet-async';
 import NotFound from './components/common/NotFound';
+import { useEffect } from 'react';
 
 function App() {
    const auth = useSelector((state) => state.auth.login.user);
    const queryClient = new QueryClient();
+   const location = useLocation();
+   const navigate = useNavigate();
+
+   const { pathname } = location;
+
+   useEffect(() => {
+      if (pathname === '/') navigate('/news');
+   }, [pathname]);
 
    return (
       <HelmetProvider>
@@ -29,7 +44,7 @@ function App() {
             {/* <Example /> */}
             <Navbar auth={auth} />
             <Routes>
-               <Route path="/news" element={<MainPage />} />
+               <Route path="/news" index element={<MainPage />} />
                <Route path="/p/:id" element={<MainPost />} />
                <Route path="/login" element={<Login />} />
                <Route path="/register" element={<Register />} />

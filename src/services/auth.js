@@ -33,7 +33,7 @@ export const login = async (
       setFechting(false);
       if (res.status === 200) {
          dispatch(loginSuccess(res.data));
-         navigate('/');
+         navigate('/news');
       }
       return res;
    } catch (err) {
