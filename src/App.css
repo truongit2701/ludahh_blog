@@ -76,3 +76,8 @@ blockquote span {
    font-weight: bold;
    margin-top: 1em;
 }
+
+code {
+   background-color: #eee;
+   padding: 2px;
+}

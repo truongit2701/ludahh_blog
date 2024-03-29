@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
 import Preview from '../components/Preview';
 import Banner from '../components/Write/Banner';
@@ -17,6 +17,7 @@ const Write = () => {
    const [categoryId, setCategoryId] = useState(null);
    const [tags, setTags] = useState([]);
    const [error, setError] = useState('');
+   const reactQuillRef = useRef(null);
    /**
     * editor handle
     * */
@@ -114,7 +115,11 @@ const Write = () => {
                />
 
                {/* editor */}
-               <Editor handleEditorChange={handleEditorChange} value={value} />
+               <Editor
+                  handleEditorChange={handleEditorChange}
+                  value={value}
+                  reactQuillRef={reactQuillRef}
+               />
             </div>
 
             <button onClick={handleCreatePost}>Tạo bài</button>
