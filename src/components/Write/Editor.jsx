@@ -83,6 +83,7 @@ const Editor = ({ handleEditorChange, value, reactQuillRef }) => {
    return (
       <div className="write_editor abcf">
          <ReactQuill
+            placeholder="Viết bài"
             theme="snow"
             modules={modules}
             formats={formats}
