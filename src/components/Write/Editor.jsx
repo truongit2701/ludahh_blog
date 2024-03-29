@@ -81,7 +81,7 @@ const Editor = ({ handleEditorChange, value, reactQuillRef }) => {
       'direction',
    ];
    return (
-      <div className="write_editor">
+      <div className="write_editor abc">
          <ReactQuill
             theme="snow"
             modules={modules}
