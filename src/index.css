@@ -27,6 +27,33 @@ html {
    font-size: 83%;
 }
 
+:root {
+   --textColor: rgb(81, 79, 79);
+}
+
+svg {
+   cursor: pointer;
+}
+
+.icon {
+   /* padding: 3px; */
+   border-radius: 10px;
+   width: 30px;
+   height: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transition: 0.1s;
+}
+
+.icon:hover {
+   background-color: #dfdfdf;
+}
+
+.icon svg {
+   font-size: 20px;
+}
+
 @media (max-width: 1024px) {
    html {
       font-size: 80%;

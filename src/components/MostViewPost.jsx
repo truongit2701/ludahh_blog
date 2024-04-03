@@ -1,5 +1,4 @@
 import React from 'react';
-import dayjs from 'dayjs';
 import { FiEye } from 'react-icons/fi';
 import { GoComment } from 'react-icons/go';
 import { useNavigate } from 'react-router-dom';

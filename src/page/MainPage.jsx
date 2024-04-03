@@ -1,16 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Helmet } from 'react-helmet';
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import { FiEye } from 'react-icons/fi';
 import { GoComment } from 'react-icons/go';
 import { useNavigate } from 'react-router-dom';
 import { formatDDMMYYYYHHMM } from '../common';
-import { fetchListPostMostView } from '../services/post';
-import '../style/mainpage.css';
+import { PAG_TAKE_BIGGEST } from '../common/enum';
 import Loading from '../components/Loading';
 import Error from '../components/common/Error';
-import { PAG_TAKE_BIGGEST } from '../common/enum';
+import { fetchListPostMostView } from '../services/post';
+import '../style/mainpage.css';
 
 const MainPage = () => {
    const navigate = useNavigate();
