@@ -25,7 +25,6 @@ function App() {
    const navigate = useNavigate();
 
    const { pathname } = location;
-
    useEffect(() => {
       if (pathname === '/') navigate('/news');
    }, [pathname]);

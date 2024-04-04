@@ -3,7 +3,7 @@ const Content = ({ content }) => {
    content = { __html: content };
    return (
       <div
-         className="main_post_content view ql-editor"
+         className="main-post_content view ql-editor"
          dangerouslySetInnerHTML={content}
       ></div>
    );

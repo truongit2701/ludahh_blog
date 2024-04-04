@@ -24,3 +24,22 @@ export const adjustTimeToLocal = (serverTime) => {
 
    return formattedDateTime;
 };
+
+export const formatMonthDay = (serverTime) => {
+   dayjs.locale('vi');
+   // Chuyển thời gian từ server về định dạng dayjs
+   const serverTimeUTC = dayjs(serverTime);
+
+   // Lấy độ chênh lệch múi giờ của máy tính so với UTC
+   const timezoneOffset = dayjs().utcOffset();
+
+   // Cộng độ chênh lệch múi giờ vào thời gian từ server
+   const adjustedTime = serverTimeUTC.add(timezoneOffset, 'minute');
+
+   // Định dạng thời gian đã điều chỉnh
+   const formattedDateTime = `${adjustedTime.format('MMMM')}, ${adjustedTime
+      .locale('vi')
+      .format('D')}`;
+
+   return formattedDateTime;
+};

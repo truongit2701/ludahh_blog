@@ -16,7 +16,7 @@ const MostViewPost = ({ post }) => {
          />
 
          <div>
-            <p className="most_view_item_title">{post.title}</p>
+            <p className="most_view_item-title">{post.title}</p>
 
             <p>
                <FiEye />
@@ -25,10 +25,10 @@ const MostViewPost = ({ post }) => {
                <GoComment />
                <span>{post.comments.length}</span>
             </p>
-            <p className="most_view_item_createdAt">
+            <p className="most_view_item-createdAt">
                {formatDDMMYYYYHHMM(post.createdAt)}
             </p>
-            <p className="most_view_item_author">{post.userId.username}</p>
+            <p className="most_view_item-author">{post.userId.username}</p>
          </div>
       </div>
    );

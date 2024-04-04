@@ -81,68 +81,116 @@ const Comment = () => {
    const totalPages = data.meta?.pageCount;
 
    if (Object.keys(data).length === 0) return <Loading />;
-
+   const imageUrl = auth?.avatar ? auth?.avatar : '/images/avatar.jpg';
    return (
-      <div className="main_post_comment">
+      <div className="main-post-comment">
          {auth && (
-            <form className="box_comment" onSubmit={handleComment}>
-               <textarea
-                  value={commentValue}
-                  onChange={(e) => setCommentValue(e.target.value)}
-               >
-                  {' '}
-               </textarea>
-               <button type="submit">gửi</button>
-            </form>
+            <div className="box-comment">
+               <form>
+                  <div className="user-info">
+                     <img
+                        src={imageUrl}
+                        className="user-img"
+                        alt="avatar"
+                        width={40}
+                     />
+                  </div>
+                  <textarea
+                     value={commentValue}
+                     onChange={(e) => setCommentValue(e.target.value)}
+                     rows={5}
+                     placeholder="Viết bình luận..."
+                     className="comment-input"
+                  >
+                     {' '}
+                  </textarea>
+               </form>
+               <button className="btn save-btn" onClick={handleComment}>
+                  Gửi
+               </button>
+            </div>
          )}
-         <div className="list_comment">
+         <div className="list-comment">
             {data.data.map((comment) => {
+               const avatarUser = comment.user?.avatar || '/images/avatar.jpg';
                return (
-                  <div className="comment_item" key={comment.id}>
-                     <p>- {comment.content}</p>
-                     <p className="comment_author">{comment?.user.username}</p>
-                     <p className="comment_time">
+                  <div className="comment-item" key={comment.id}>
+                     <div className="user-info">
+                        <img
+                           src={avatarUser}
+                           className="user-img"
+                           alt="avatar"
+                           width={40}
+                        />
+                        <div className="user-fullname">
+                           {comment.user.fullName || 'văn trường'}
+                        </div>
+                     </div>
+                     <p className="comment-content">- {comment.content}</p>
+
+                     <p className="comment-time">
                         {adjustTimeToLocal(comment.createdAt)}
                      </p>
                      <div className="comment_reply">
                         {openChildCommentsId !== comment.id ? (
                            <button
+                              className="btn reply-btn"
                               onClick={() => toggleChildComments(comment.id)}
                            >
-                              Phản hồi
+                              Xem phản hồi
                            </button>
                         ) : (
                            <>
-                              <button onClick={() => toggleChildComments(null)}>
-                                 Hủy
-                              </button>
                               {auth && (
-                                 <form
-                                    action=""
-                                    className="comment_reply_form"
-                                    onSubmit={handleReplyComment}
-                                 >
+                                 <form onSubmit={handleReplyComment}>
                                     <textarea
                                        cols="30"
                                        value={commentChildValue}
-                                       rows="3"
+                                       rows="4"
+                                       className="comment-input"
                                        onChange={(e) =>
                                           setCommentChildValue(e.target.value)
                                        }
                                     ></textarea>
-                                    <button>gửi</button>
+                                    <div className="flex">
+                                       <button
+                                          className="btn cancel-btn"
+                                          onClick={() =>
+                                             toggleChildComments(null)
+                                          }
+                                       >
+                                          Hủy
+                                       </button>
+                                       <button className="btn save-btn">
+                                          Trả lời
+                                       </button>
+                                    </div>
                                  </form>
                               )}
-                              <div className="list_child_comment">
+                              <div className="list-child-comment">
                                  {/* Hiển thị danh sách comment con */}
                                  {listChildComment.length
                                     ? listChildComment.map((childComment) => (
                                          <div key={childComment.id}>
-                                            <p>- {childComment.content}</p>
-                                            <p className="comment_author">
-                                               {childComment.user.username}
+                                            <div className="user-info">
+                                               <img
+                                                  src={
+                                                     childComment.user.avatar ||
+                                                     '/images/avatar.jpg'
+                                                  }
+                                                  className="user-img"
+                                                  alt="avatar"
+                                                  width={40}
+                                               />
+                                               <div className="user-fullname">
+                                                  {childComment.user.fullName ||
+                                                     'văn trường'}
+                                               </div>
+                                            </div>
+                                            <p className="comment-content">
+                                               - {childComment.content}
                                             </p>
-                                            <p className="comment_time">
+                                            <p className="comment-time">
                                                {adjustTimeToLocal(
                                                   childComment.createdAt
                                                )}
@@ -164,11 +212,11 @@ const Comment = () => {
                            </div>
 
                            {openChildCommentsId === comment.id && (
-                              <div className="list_child_comment">
+                              <div className="list-child-comment">
                                  {listChildComment.map((childComment) => (
                                     <div key={childComment.id}>
                                        <p>- {childComment.content}</p>
-                                       <p className="comment_author">
+                                       <p className="comment-author">
                                           {childComment.user.username}
                                        </p>
                                     </div>
@@ -181,14 +229,21 @@ const Comment = () => {
                );
             })}
          </div>
-         <div>
-            {/* Nút điều hướng */}
-            {Array.from({ length: totalPages }, (_, i) => (
-               <button key={i + 1} onClick={() => handlePageChange(i + 1)}>
-                  {i + 1}
-               </button>
-            ))}
-         </div>
+
+         {totalPages > 1 && (
+            <div className="pagination">
+               {/* Nút điều hướng */}
+               {Array.from({ length: totalPages }, (_, i) => (
+                  <button
+                     key={i + 1}
+                     className={i + 1 === currentPage ? 'active' : ''}
+                     onClick={() => handlePageChange(i + 1)}
+                  >
+                     {i + 1}
+                  </button>
+               ))}
+            </div>
+         )}
       </div>
    );
 };

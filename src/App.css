@@ -17,7 +17,75 @@
    color: red;
 }
 
-.main_post_content p {
+.btn {
+   border: none;
+   padding: 8px 15px;
+   border-radius: 10px;
+   color: #fff;
+   font-weight: 600;
+   display: flex;
+   justify-content: flex-end;
+   cursor: pointer;
+   margin: 5px 0;
+}
+
+.save-btn {
+   background-color: cornflowerblue;
+}
+
+.cancel-btn {
+   background-color: deeppink;
+}
+
+.reply-btn {
+   background-color: goldenrod;
+}
+
+.user-info {
+   display: flex;
+   gap: 5px;
+   align-items: flex-end;
+   margin-bottom: 10px;
+}
+
+.user-img {
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   object-fit: cover;
+}
+
+.user-fullname {
+   font-weight: 600;
+   font-size: 1.1rem;
+   text-transform: capitalize;
+}
+
+/* pagination */
+.pagination {
+   display: flex;
+   gap: 8px;
+}
+.pagination button {
+   border: none;
+   color: #000;
+   padding: 4px 12px;
+   font-size: 14px;
+   border-radius: 8px;
+   cursor: pointer;
+}
+
+.pagination button.active {
+   color: #fff;
+   background-color: cornflowerblue;
+}
+
+.flex {
+   display: flex;
+   gap: 5px;
+}
+
+.main-post_content p {
    font-size: 1em;
 }
 

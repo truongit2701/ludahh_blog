@@ -1,4 +1,4 @@
-.comment_author {
+.comment-author {
    font-weight: 800;
    margin: 0;
 }
@@ -7,11 +7,11 @@
    position: relative;
 }
 
-.list_child_comment {
+.list-child-comment {
    margin-left: 20px;
 }
 
-.comment_time {
+.comment-time {
    color: rgb(170, 165, 165);
    font-size: 10px;
    margin: 2px 0 2px 5px;

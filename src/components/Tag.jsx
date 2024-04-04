@@ -2,7 +2,7 @@ import React from 'react';
 
 const Tag = ({ tags }) => {
    return (
-      <div className="main_post_tag">
+      <div className="main-post_tag">
          <div className="list_tag">
             {tags?.map((tag) => {
                return (

@@ -23,12 +23,12 @@ const Preview = ({
    return (
       <div className={`popup ${isOpen ? 'open' : ''}`}>
          <div className="popup-content">
-            <div className="main_post">
-               <div className="main_post_banner">
-                  <img src={banner} alt="main_post_img" width={'50%'} />
-                  <div className="main_post_heading">
+            <div className="main-post">
+               <div className="main-post_banner">
+                  <img src={banner} alt="main-post_img" width={'50%'} />
+                  <div className="main-post_heading">
                      <p>{categoryId && categoryId.split('_')[1]}</p>
-                     <p className="main_post_title">{title}</p>
+                     <p className="main-post_title">{title}</p>
                      <div>
                         <p>
                            <CiTimer />

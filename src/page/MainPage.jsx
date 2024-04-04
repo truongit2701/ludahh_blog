@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
+import { FaRegComment } from 'react-icons/fa6';
 import { FiEye } from 'react-icons/fi';
-import { GoComment } from 'react-icons/go';
+import { GoHeart } from 'react-icons/go';
 import { useNavigate } from 'react-router-dom';
-import { formatDDMMYYYYHHMM } from '../common';
+import { formatMonthDay } from '../common';
 import { PAG_TAKE_BIGGEST } from '../common/enum';
 import Loading from '../components/Loading';
 import Error from '../components/common/Error';
@@ -38,62 +39,95 @@ const MainPage = () => {
       setCurrentPage(pageNumber);
    };
 
+   const getContent = (data) => {
+      const content = { __html: data };
+      return content;
+   };
+
    return (
       <>
-         <div className="main_page">
+         <div className="main-page">
             {/* <Helmet>
                <title>mmmmmmmmmm</title>
             </Helmet> */}
-            <div>
-               {data.data.map((post) => (
-                  <div
-                     key={post.id}
-                     className="post_item"
-                     onClick={() => navigate(`/p/${post.id}`)}
-                  >
-                     <div className="post_item_img">
-                        <img
-                           src={post.banner}
-                           alt="post_item_img"
-                           width={60}
-                           height={60}
-                        />
-                     </div>
-                     <div className="post_item_top">
-                        <div className="post_item_author">
-                           {post.userId.username}
+            <div className="content">
+               <div className="category">
+                  <div className="category-tag active">New</div>
+
+                  <div className="category-tag">Top</div>
+               </div>
+               <div className="post-container">
+                  {data.data.map((post) => (
+                     <div key={post.id} className="post-item">
+                        <div
+                           className="post-item-left"
+                           onClick={() => navigate(`/p/${post.id}`)}
+                        >
+                           <div className="post-item-title">{post.title}</div>
+                           <div
+                              className="post-item-content"
+                              dangerouslySetInnerHTML={getContent(post.content)}
+                           ></div>
+
+                           <div className="post-item-description">
+                              <div className="post-item-author">
+                                 {post.userId.username}
+                              </div>
+                              •
+                              <div className="post-item-createdDate">
+                                 {formatMonthDay(post.createdAt)}
+                              </div>
+                           </div>
+
+                           <div className="post-item-icons">
+                              <div>
+                                 <div className="icon">
+                                    <FiEye />
+                                 </div>
+                                 <span>{post.view}</span>
+                              </div>
+                              <div>
+                                 <div className="icon">
+                                    <GoHeart />
+                                 </div>
+                                 <span>{post.view}</span>
+                              </div>
+
+                              <div>
+                                 <div className="icon">
+                                    <FaRegComment />
+                                 </div>
+                                 <span>{post.comments.length}</span>
+                              </div>
+                           </div>
                         </div>
-
-                        <div>{formatDDMMYYYYHHMM(post.createdAt)}</div>
-                        <div className="post_item_title">{post.title}</div>
-
-                        <div>
-                           <FiEye />
-                           <span style={{ marginRight: '5px' }}>
-                              {post.view}
-                           </span>
-
-                           <GoComment />
-                           <span>{post.comments.length}</span>
+                        <div className="post-item-right">
+                           <div className="post-item-img">
+                              <img
+                                 src={post.banner}
+                                 alt="post-item-img"
+                                 width={'100%'}
+                              />
+                           </div>
                         </div>
                      </div>
-                  </div>
-               ))}
-            </div>
-
-            {/* pagination */}
-            {data.meta.page < 1 && (
-               <div className="pagination">
-                  {Array.from({ length: totalPages }, (_, i) => (
-                     <button
-                        key={i + 1}
-                        onClick={() => handlePageChange(i + 1)}
-                     >
-                        {i + 1}
-                     </button>
                   ))}
                </div>
-            )}
+
+               {/* pagination */}
+               {data.meta.page < 1 && (
+                  <div className="pagination">
+                     {Array.from({ length: totalPages }, (_, i) => (
+                        <button
+                           key={i + 1}
+                           onClick={() => handlePageChange(i + 1)}
+                        >
+                           {i + 1}
+                        </button>
+                     ))}
+                  </div>
+               )}
+            </div>
          </div>
       </>
    );

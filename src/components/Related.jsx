@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Related = ({ listRelated }) => {
    const navigate = useNavigate();
    return (
-      <div className="main_post_related">
+      <div className="main-post_related">
          <h4>Liên quan</h4>
 
          <div className="list_related">

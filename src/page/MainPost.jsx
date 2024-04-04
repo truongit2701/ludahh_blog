@@ -4,7 +4,7 @@ import MostViewPost from '../components/MostViewPost';
 import Tag from '../components/Tag';
 import { fetchDetailPost, fetchListPostMostView } from '../services/post';
 import { getCategoryTag } from '../services/write';
-import '../style/mainpage.css';
+import '../style/main-post.css';
 import Post from './Post';
 import { PAG_TAKE_BIGGEST } from '../common/enum';
 import Error from '../components/common/Error';
@@ -45,13 +45,13 @@ const MainPost = () => {
    if (error) return <Error />;
 
    return (
-      <div>
+      <div className="main-post">
          <div className="content">
-            <div className="new_post">
+            <div className="new-post">
                <Post post={detailPost} />
             </div>
 
-            <div className="most_view_post">
+            {/* <div className="most_view-post">
                <h2 className="heading">Xem nhiều</h2>
                <div className="list_most_view">
                   {listPostMostView
@@ -74,7 +74,7 @@ const MainPost = () => {
                      ))}
                   </div>
                </div>
-            </div>
+            </div> */}
          </div>
       </div>
    );
