@@ -26,12 +26,12 @@ const TagList = ({ tags, setTags, listTag }) => {
 
    return (
       <div className="write_tag">
-         <span>- Tag:</span>
-
          <div>
+            <span>- Tag:</span>
             <input
                type="text"
                placeholder="search tag"
+               className="write-input"
                value={searchTag}
                onChange={handleSearchTag}
             />
@@ -40,11 +40,11 @@ const TagList = ({ tags, setTags, listTag }) => {
                <button
                   key={tag.id}
                   onClick={() => handleTagClick(tag)}
-                  className={
+                  className={`write-tag ${
                      tags.find((tagItem) => tagItem.id === tag.id)
                         ? 'tag-active'
                         : ''
-                  }
+                  }`}
                >
                   {tag.content}
                </button>

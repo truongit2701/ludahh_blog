@@ -13,33 +13,6 @@
    justify-content: center;
 }
 
-.text-error {
-   color: red;
-}
-
-.btn {
-   border: none;
-   padding: 8px 15px;
-   border-radius: 10px;
-   color: #fff;
-   font-weight: 600;
-   cursor: pointer;
-   margin: 5px 0;
-   text-align: center;
-}
-
-.save-btn {
-   background-color: cornflowerblue;
-}
-
-.cancel-btn {
-   background-color: deeppink;
-}
-
-.reply-btn {
-   background-color: goldenrod;
-}
-
 .user-info {
    display: flex;
    gap: 5px;

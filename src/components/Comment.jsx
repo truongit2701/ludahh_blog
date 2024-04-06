@@ -11,6 +11,7 @@ import '../style/comment.css';
 import Loading from './Loading';
 import { adjustTimeToLocal } from '../common';
 import { PAG_TAKE_MINIMUN } from '../common/enum';
+import Pagination from './common/Pagination';
 
 const Comment = () => {
    const { id } = useParams();
@@ -230,9 +231,15 @@ const Comment = () => {
             })}
          </div>
 
+         {/* <Pagination
+            data={data.data}
+            itemsPerPage={PAG_TAKE_MINIMUN}
+            handlePageChange={handlePageChange}
+            currentPage={currentPage}
+         /> */}
+
          {totalPages > 1 && (
             <div className="pagination">
-               {/* Nút điều hướng */}
                {Array.from({ length: totalPages }, (_, i) => (
                   <button
                      key={i + 1}

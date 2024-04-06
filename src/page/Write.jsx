@@ -8,6 +8,7 @@ import Title from '../components/Write/Title';
 import { createPost } from '../services/write';
 import '../style/write.css';
 import { toast } from 'react-toastify';
+import { GoFileMedia } from 'react-icons/go';
 
 const Write = () => {
    const [value, setValue] = useState('');
@@ -79,11 +80,15 @@ const Write = () => {
    return (
       <Fragment>
          <div className="write">
-            <button className="text-error" onClick={clearData}>
-               Clear data
-            </button>
+            <div className="cancel-container">
+               <button className="btn cancel-btn" onClick={clearData}>
+                  Clear data
+               </button>
+            </div>
             <div className="write_button_preview">
-               <button onClick={openPopup}>preview</button>
+               <button onClick={openPopup} className="btn success">
+                  Preview
+               </button>
 
                {isOpen && (
                   <Preview
@@ -122,7 +127,9 @@ const Write = () => {
                />
             </div>
 
-            <button onClick={handleCreatePost}>Tạo bài</button>
+            <button onClick={handleCreatePost} className="btn save-btn">
+               Tạo bài
+            </button>
          </div>
       </Fragment>
    );

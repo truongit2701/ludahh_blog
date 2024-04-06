@@ -2,9 +2,12 @@ import React from 'react';
 
 const Category = ({ setCategoryId, listCategory }) => {
    return (
-      <div className="write_category">
+      <div>
          <span>- Danh mục:</span>
-         <select onChange={(e) => setCategoryId(e.target.value)}>
+         <select
+            className="write-select"
+            onChange={(e) => setCategoryId(e.target.value)}
+         >
             <option value="0_Không">Không</option>
             {listCategory.map((category) => (
                <option

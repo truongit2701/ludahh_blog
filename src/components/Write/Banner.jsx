@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { uploadImageCloudinary } from '../../services/upload';
+import { GoFileMedia } from 'react-icons/go';
 
 const Banner = ({ banner, setBanner }) => {
    const [imageReview, setImageReview] = useState(null);
@@ -22,13 +23,18 @@ const Banner = ({ banner, setBanner }) => {
             ref={fileInputRef}
             onChange={handleUploadBanner}
          />
-         <button onClick={() => fileInputRef.current.click()}>
-            Chọn banner
-         </button>
+         {/* <button>Chọn banner</button> */}
+
+         <div className="icon">
+            <GoFileMedia
+               size={25}
+               onClick={() => fileInputRef.current.click()}
+            />
+         </div>
 
          <>
             {banner === '' ? (
-               'banner preview'
+               '*banner preview'
             ) : (
                <img
                   src={banner !== '' ? URL.createObjectURL(imageReview) : ''}
