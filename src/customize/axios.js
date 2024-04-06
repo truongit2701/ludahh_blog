@@ -67,7 +67,7 @@ instance.interceptors.response.use(
       return response.data;
    },
    function (error) {
-      console.log('Lỗi trả response', error);
+      console.log('Lỗi trả response', error.response.data.path, error);
       toast(`🦄  ${error.response.data.message}`, {
          position: 'top-right',
          autoClose: 2000,

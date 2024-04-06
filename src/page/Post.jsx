@@ -1,22 +1,29 @@
 import React from 'react';
-import { CiTimer } from 'react-icons/ci';
+import { FaRegComment } from 'react-icons/fa6';
 import { FiEye } from 'react-icons/fi';
-import { GoComment, GoHeart } from 'react-icons/go';
+import { GoHeart, GoHeartFill } from 'react-icons/go';
 import { IoPersonOutline } from 'react-icons/io5';
 import { formatDDMMYYYYHHMM } from '../common';
 import Comment from '../components/Comment';
 import Content from '../components/Content';
-import Related from '../components/Related';
 import Tag from '../components/Tag';
-import { Helmet } from 'react-helmet';
-import { FaRegComment } from 'react-icons/fa6';
+import { reaction } from '../services/post';
+import { useSelector } from 'react-redux';
 
-const Post = ({ post }) => {
+const Post = ({ post, setDetailPost }) => {
+   const auth = useSelector((state) => state.auth.login.user);
+   const handleReaction = async (type) => {
+      if (!auth) return;
+      setDetailPost((prevPost) => ({
+         ...prevPost,
+         is_like: Number(!type),
+         total_like: !type ? prevPost.total_like + 1 : prevPost.total_like - 1,
+      }));
+      await reaction(post.id);
+   };
+
    return (
       <>
-         {/* <Helmet>
-            <title>{post.title}</title>
-         </Helmet> */}
          <div className="main-post-banner">
             <div className="main-post-title">{post.title}</div>
             <li className="main-post-category">{post.categoryId?.content}</li>
@@ -38,10 +45,17 @@ const Post = ({ post }) => {
                   <span>{post.view}</span>
                </div>
                <div>
-                  <div className="icon">
-                     <GoHeart />
+                  <div
+                     className="icon"
+                     onClick={() => handleReaction(post.is_like)}
+                  >
+                     {post.is_like ? (
+                        <GoHeartFill color="deeppink" />
+                     ) : (
+                        <GoHeart />
+                     )}
                   </div>
-                  <span>{post.view}</span>
+                  <span>{post.total_like}</span>
                </div>
 
                <div>

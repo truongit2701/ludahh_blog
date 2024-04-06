@@ -3,7 +3,7 @@ import { BsVectorPen } from 'react-icons/bs';
 import { MdOutlineLogout } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../redux/navbarSlice';
+import { logout } from '../redux/authSlice';
 
 const UserInfo = ({ setIsShow }) => {
    const navigate = useNavigate();

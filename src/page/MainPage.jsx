@@ -1,49 +1,79 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
-import { FaRegComment } from 'react-icons/fa6';
-import { FiEye } from 'react-icons/fi';
-import { GoHeart } from 'react-icons/go';
-import { useNavigate } from 'react-router-dom';
-import { formatMonthDay } from '../common';
-import { PAG_TAKE_BIGGEST } from '../common/enum';
+import { saveLocalStorage } from '../common';
+import { STORAGE_KEY } from '../common/enum';
+import CategoryTag from '../components/CategoryTag';
+import InputSearch from '../components/InputSearch';
 import Loading from '../components/Loading';
-import Error from '../components/common/Error';
-import { fetchListPostMostView } from '../services/post';
+import PostItem from '../components/PostItem';
+import { fetchListPost } from '../services/post';
 import '../style/mainpage.css';
+import Pagination from '../components/common/Pagination';
 
 const MainPage = () => {
-   const navigate = useNavigate();
+   const [isFetching, setIsFetching] = useState(false);
+   const [posts, setPosts] = useState([]);
    const [currentPage, setCurrentPage] = useState(1);
+   const [searchTerm, setSearchTerm] = useState('');
+   const [filteredPosts, setFilteredPosts] = useState([]);
+   const [showPosts, setShowPosts] = useState('category');
 
-   const { isLoading, error, data, refetch } = useQuery({
-      queryKey: ['post-most-view'],
-      queryFn: () => fetchListPostMostView(currentPage, PAG_TAKE_BIGGEST),
-      cacheTime: 5000,
-   });
+   const [postType, setPostType] = useState('new');
+
+   const [showInput, setShowInput] = useState(false);
 
    useEffect(() => {
-      refetch();
+      setIsFetching(true);
 
-      return () => {};
-   }, [currentPage, refetch]);
+      async function fetchData() {
+         const listPost = await fetchListPost();
+         setPosts(listPost);
+         setFilteredPosts(listPost);
+         saveLocalStorage(STORAGE_KEY.LIST_POST, listPost);
+      }
+      fetchData().then(() => setIsFetching(false));
+   }, []);
 
-   if (isLoading) return <Loading />;
+   if (isFetching) return <Loading />;
 
-   if (error) return <Error />;
+   const itemsPerPage = 3;
+   const startIndex = (currentPage - 1) * itemsPerPage;
+   const endIndex = startIndex + itemsPerPage;
 
-   const totalPages = data.meta.pageCount;
+   const handleSearch = (event) => {
+      const keyword = event.target.value;
+      setSearchTerm(keyword);
+      const filtered = posts.filter(
+         (post) =>
+            post.title.toLowerCase().includes(keyword.toLowerCase()) ||
+            post.content.toLowerCase().includes(keyword.toLowerCase())
+      );
+      setFilteredPosts(filtered);
+   };
+
+   const sortedPosts = posts.slice().sort((a, b) => {
+      if (postType === 'new') {
+         return new Date(b.createdAt) - new Date(a.createdAt);
+      } else if (postType === 'top') {
+         return b.view - a.view;
+      }
+      return 0;
+   });
+
+   const currentData = sortedPosts.slice(startIndex, endIndex);
 
    // Logic chuyển đến trang khác
    const handlePageChange = (pageNumber) => {
       setCurrentPage(pageNumber);
    };
 
-   const getContent = (data) => {
-      const content = { __html: data };
-      return content;
+   const toggleInput = () => {
+      setShowInput(!showInput);
+      const newShowPosts = showPosts === 'category' ? 'search' : 'category';
+      setShowPosts(newShowPosts);
    };
 
+   const data = showPosts === 'category' ? currentData : filteredPosts;
    return (
       <>
          <div className="main-page">
@@ -52,81 +82,41 @@ const MainPage = () => {
             </Helmet> */}
             <div className="content">
                <div className="category">
-                  <div className="category-tag active">New</div>
-
-                  <div className="category-tag">Top</div>
+                  <div className={`type-container ${showInput ? 'none' : ''}`}>
+                     <CategoryTag
+                        type="new"
+                        activeType={postType}
+                        onClick={setPostType}
+                     />
+                     <CategoryTag
+                        type="top"
+                        activeType={postType}
+                        onClick={setPostType}
+                     />
+                  </div>
+                  <InputSearch
+                     value={searchTerm}
+                     onChange={handleSearch}
+                     showInput={showInput}
+                     toggleInput={toggleInput}
+                  />
                </div>
+
                <div className="post-container">
-                  {data.data.map((post) => (
-                     <div key={post.id} className="post-item">
-                        <div
-                           className="post-item-left"
-                           onClick={() => navigate(`/p/${post.id}`)}
-                        >
-                           <div className="post-item-title">{post.title}</div>
-                           <div
-                              className="post-item-content"
-                              dangerouslySetInnerHTML={getContent(post.content)}
-                           ></div>
-
-                           <div className="post-item-description">
-                              <div className="post-item-author">
-                                 {post.userId.username}
-                              </div>
-                              •
-                              <div className="post-item-createdDate">
-                                 {formatMonthDay(post.createdAt)}
-                              </div>
-                           </div>
-
-                           <div className="post-item-icons">
-                              <div>
-                                 <div className="icon">
-                                    <FiEye />
-                                 </div>
-                                 <span>{post.view}</span>
-                              </div>
-                              <div>
-                                 <div className="icon">
-                                    <GoHeart />
-                                 </div>
-                                 <span>{post.view}</span>
-                              </div>
-
-                              <div>
-                                 <div className="icon">
-                                    <FaRegComment />
-                                 </div>
-                                 <span>{post.comments.length}</span>
-                              </div>
-                           </div>
-                        </div>
-                        <div className="post-item-right">
-                           <div className="post-item-img">
-                              <img
-                                 src={post.banner}
-                                 alt="post-item-img"
-                                 width={'100%'}
-                              />
-                           </div>
-                        </div>
-                     </div>
+                  {data.map((post) => (
+                     <PostItem key={post.id} post={post} />
                   ))}
                </div>
 
                {/* pagination */}
-               {data.meta.page < 1 && (
-                  <div className="pagination">
-                     {Array.from({ length: totalPages }, (_, i) => (
-                        <button
-                           key={i + 1}
-                           onClick={() => handlePageChange(i + 1)}
-                        >
-                           {i + 1}
-                        </button>
-                     ))}
-                  </div>
-               )}
+               {showPosts === 'category' ? (
+                  <Pagination
+                     data={posts}
+                     itemsPerPage={itemsPerPage}
+                     currentPage={currentPage}
+                     handlePageChange={handlePageChange}
+                  />
+               ) : null}
             </div>
          </div>
       </>

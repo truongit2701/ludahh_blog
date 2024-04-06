@@ -1,18 +1,20 @@
 import axios from '../customize/axios';
 import { loginSuccess } from '../redux/authSlice';
 
-export const register = async (info, setFechting) => {
+export const register = async (info, setFetching, setError) => {
    const { username, password } = info;
-   setFechting(true);
+   setFetching(true);
    try {
       const res = await axios.post('/auth/register', {
          username,
          password,
       });
-      setFechting(false);
+
+      setFetching(false);
       return res;
    } catch (err) {
-      setFechting(false);
+      setError(err.message);
+      setFetching(false);
    }
 };
 

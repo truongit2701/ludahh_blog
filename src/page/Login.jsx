@@ -30,22 +30,34 @@ const Login = () => {
    return (
       <div className="login">
          {fetching && <Loading />}
-         <form action="" className="login_form" onSubmit={handleLogin}>
+         <form action="" className="login-form" onSubmit={handleLogin}>
             {error && <p className="text-error">{error}</p>}
-            <input
-               type="text"
-               value={info.username}
-               onChange={(e) => setInfo({ ...info, username: e.target.value })}
-               placeholder="username"
-            />
-            <input
-               type="password"
-               value={info.password}
-               onChange={(e) => setInfo({ ...info, password: e.target.value })}
-               placeholder="****"
-            />
-            <Link to="/register">Chưa có tài khoản! Đăng ký</Link>
-            <button type="submit">đăng nhập</button>
+            <div>
+               <input
+                  type="text"
+                  value={info.username}
+                  onChange={(e) =>
+                     setInfo({ ...info, username: e.target.value })
+                  }
+                  placeholder="Tên đăng nhập"
+               />
+            </div>
+            <div>
+               <input
+                  type="password"
+                  value={info.password}
+                  onChange={(e) =>
+                     setInfo({ ...info, password: e.target.value })
+                  }
+                  placeholder="****"
+               />
+            </div>
+            <div>
+               <Link to="/register">Chưa có tài khoản! Đăng ký</Link>
+               <button type="submit" className="login-btn">
+                  Đăng nhập
+               </button>
+            </div>
          </form>
       </div>
    );

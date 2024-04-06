@@ -43,3 +43,7 @@ export const formatMonthDay = (serverTime) => {
 
    return formattedDateTime;
 };
+
+export const saveLocalStorage = (key, data) => {
+   localStorage.setItem(key, JSON.stringify(data));
+};

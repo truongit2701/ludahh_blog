@@ -32,9 +32,6 @@ const Navbar = ({ auth }) => {
             </div>
             <div className="navbar-auth">
                <div className="icon">
-                  <IoSearchOutline size={25} />
-               </div>
-               <div className="icon">
                   <GoBell size={22} />
                </div>
                {auth ? (

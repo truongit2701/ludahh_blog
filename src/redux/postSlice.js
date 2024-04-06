@@ -1,17 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const postSlice = createSlice({
-   name: 'post',
+   name: 'list-post',
    initialState: {
-      item: null,
+      item: [],
    },
    reducers: {
-      fetchMainPost: (state, action) => {
+      saveListPost: (state, action) => {
          state.item = action.payload;
+         localStorage.setItem('list-post', action.payload);
       },
    },
 });
 
-export const { fetchMainPost } = postSlice.actions;
+export const { saveListPost } = postSlice.actions;
 
 export default postSlice.reducer;

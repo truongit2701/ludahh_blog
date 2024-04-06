@@ -10,11 +10,11 @@ const postPersistConfig = {
 };
 
 // const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
-const persistedPostReducer = persistReducer(postPersistConfig, postReducer);
+// const persistedPostReducer = persistReducer(postPersistConfig, postReducer);
 export const store = configureStore({
    reducer: {
       auth: authReducer,
-      post: persistedPostReducer,
+      post: postReducer,
    },
    middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({

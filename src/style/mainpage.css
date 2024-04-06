@@ -15,6 +15,14 @@
    display: flex;
    gap: 10px;
    margin-top: 50px;
+   justify-content: space-between;
+}
+
+.main-page > .content .category div {
+   display: flex;
+   gap: 10px;
+   align-items: center;
+   text-transform: capitalize;
 }
 
 .main-page > .content .category .category-tag {
@@ -116,6 +124,29 @@
 
 .main-page .post-item .post-item-author {
    font-weight: 700;
+}
+
+/* input-search */
+.input-parent input[type='text'] {
+   width: 0;
+   padding: 10px;
+   outline: none;
+   transition: width 0.3s ease-out;
+}
+
+.input-search {
+   border: none;
+   border: 1px solid #d6d6d6;
+   padding: 8px 12px;
+   border-radius: 10px;
+}
+
+.input-parent.show {
+   width: 100%;
+}
+
+.input-parent.show input[type='text'] {
+   width: 100%; /* Độ rộng khi input được hiển thị */
 }
 
 /* related */

@@ -35,6 +35,10 @@ svg {
    cursor: pointer;
 }
 
+.bg-red {
+   background-color: deeppink;
+}
+
 .icon {
    /* padding: 3px; */
    border-radius: 10px;
@@ -52,6 +56,15 @@ svg {
 
 .icon svg {
    font-size: 20px;
+}
+
+.none {
+   width: 0;
+   overflow: hidden;
+}
+
+.flex-1 {
+   flex: 1;
 }
 
 @media (max-width: 1024px) {

@@ -6,14 +6,13 @@ import Loading from '../components/Loading';
 
 const Register = () => {
    const [fetching, setFetching] = useState(false);
+   const [error, setError] = useState('');
    const [info, setInfo] = useState({
       username: '',
       password: '',
       confirmPassword: '',
    });
    const [passwordMatch, setPasswordMatch] = useState(true);
-
-   const navigate = useNavigate();
 
    const handleRegister = async (e) => {
       e.preventDefault();
@@ -25,15 +24,14 @@ const Register = () => {
       }
 
       // Tiếp tục xử lý khi mật khẩu trùng khớp
-      const response = await register(info, setFetching);
-
-      if (response.status === 200) navigate('/login');
+      await register(info, setFetching, setError);
    };
 
    return (
       <div className="login">
          {fetching && <Loading />}
-         <form className="login_form" onSubmit={handleRegister}>
+         <form className="login-form" onSubmit={handleRegister}>
+            {error && <p className="text-error">{error}</p>}
             {!passwordMatch && <p className="error">Mật khẩu không khớp</p>}
 
             <input
@@ -42,7 +40,7 @@ const Register = () => {
                onChange={(e) =>
                   setInfo((prev) => ({ ...prev, username: e.target.value }))
                }
-               placeholder="username"
+               placeholder="Tên đăng nhập"
             />
             <input
                type="password"
@@ -63,8 +61,10 @@ const Register = () => {
                }
                placeholder="****"
             />
-            <Link to="/login">Tiến hành đăng nhập</Link>
-            <button type="submit">Đăng ký</button>
+            <Link to="/login">Đã có tài khoản</Link>
+            <button type="submit" className="login-btn">
+               Đăng ký
+            </button>
          </form>
       </div>
    );
