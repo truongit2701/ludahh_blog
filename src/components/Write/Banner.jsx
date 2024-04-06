@@ -15,7 +15,7 @@ const Banner = ({ banner, setBanner }) => {
       console.log('♥️ ~ handleUploadBanner ~ response:', response.data.url);
    };
    return (
-      <div className="write_banner">
+      <div className="write-banner">
          <input
             type="file"
             accept="image/*"

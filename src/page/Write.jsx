@@ -103,7 +103,7 @@ const Write = () => {
                )}
             </div>
 
-            <div className="write_form">
+            <div className="write-form">
                {error !== '' ? <p className="text-error">{error}</p> : null}
                {/* banner */}
                <Banner banner={banner} setBanner={setBanner} />

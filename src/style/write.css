@@ -20,6 +20,7 @@
    padding: 5px 8px;
    border-radius: 3px;
    margin-right: 5px;
+   margin-top: 5px;
 }
 
 .write-select {
@@ -33,22 +34,19 @@
    margin-bottom: 10px;
 }
 
-.write_form {
+.write-form {
    width: 100%;
    display: flex;
    flex-direction: column;
    gap: 10px;
 }
 
-.write_preview {
-}
-
-.write_banner {
+.write-banner {
    display: flex;
    align-items: center;
 }
 
-.write_banner img {
+.write-banner img {
    object-fit: cover;
 }
 
@@ -57,9 +55,13 @@
    background-color: gray;
 }
 
-/* category_tag */
-.category_tag {
-   display: flex;
-   justify-content: space-between;
-   padding: 10px;
+/* quill */
+.ql-toolbar {
+   border-top-left-radius: 8px;
+   border-top-right-radius: 8px;
+}
+
+.ql-container {
+   border-bottom-left-radius: 8px;
+   border-bottom-right-radius: 8px;
 }
