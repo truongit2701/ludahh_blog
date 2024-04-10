@@ -16,9 +16,22 @@ const authSlice = createSlice({
          state.login.user = null;
          localStorage.setItem('ludahh_auth', null);
       },
+
+      updateAvatarRedux: (state, action) => {
+         const auth = state.login.user;
+         auth.avatar = action.payload;
+         localStorage.setItem('ludahh_auth', JSON.stringify(auth));
+      },
+
+      updateInfoRedux: (state, action) => {
+         const auth = state.login.user;
+         auth.fullName = action.payload;
+         localStorage.setItem('ludahh_auth', JSON.stringify(auth));
+      },
    },
 });
 
-export const { loginSuccess, logout } = authSlice.actions;
+export const { loginSuccess, logout, updateAvatarRedux, updateInfoRedux } =
+   authSlice.actions;
 
 export default authSlice.reducer;

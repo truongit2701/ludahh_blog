@@ -39,7 +39,9 @@ const Navbar = ({ auth }) => {
                      <div className="icon">
                         <HiBars3 onClick={openPopup} size={28} />
                      </div>
-                     {isShow ? <UserInfo setIsShow={setIsShow} /> : null}
+                     {isShow ? (
+                        <UserInfo auth={auth} setIsShow={setIsShow} />
+                     ) : null}
                   </div>
                ) : (
                   <Link onClick={() => setIsShow(false)} to="/login">

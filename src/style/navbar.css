@@ -77,19 +77,19 @@
    width: 200px;
 }
 
-.popup-info .profile {
+.popup-info .profile-popup {
    border-bottom: 1px solid #bcb8b8;
 }
 
-.popup-info .profile .email {
+.popup-info .profile-popup .email {
    font-weight: 600;
 }
 
-.popup-info .profile p {
+.popup-info .profile-popup p {
    font-size: 11px;
 }
 
-.popup-info .profile p:hover {
+.popup-info .profile-popup p:hover {
    text-decoration: underline;
    cursor: pointer;
 }

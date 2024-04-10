@@ -6,6 +6,7 @@
 .write .cancel-container {
    display: flex;
    justify-content: end;
+   /* align-items: flex-end; */
 }
 
 .write-input {
@@ -64,4 +65,8 @@
 .ql-container {
    border-bottom-left-radius: 8px;
    border-bottom-right-radius: 8px;
+}
+
+.ql-editor p img {
+   width: 100%;
 }

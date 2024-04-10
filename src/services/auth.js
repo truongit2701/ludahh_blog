@@ -52,3 +52,21 @@ export const fetchUser = async () => {
       throw error;
    }
 };
+
+export const updateAvatarUser = async (avatar) => {
+   try {
+      const res = await axios.post('user/update-avatar', { avatar });
+      if (res.status === 200) return res.data;
+   } catch (error) {
+      throw error;
+   }
+};
+
+export const updateInfoUser = async (fullName) => {
+   try {
+      const res = await axios.post('user/update', { fullName });
+      if (res.status === 200) return res.data;
+   } catch (error) {
+      throw error;
+   }
+};

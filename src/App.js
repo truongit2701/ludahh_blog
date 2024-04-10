@@ -17,6 +17,7 @@ import PostManage from './page/Manage/Post';
 import User from './page/Manage/User';
 import Register from './page/Register';
 import Write from './page/Write';
+import Profile from './page/User/Profile';
 
 function App() {
    const auth = useSelector((state) => state.auth.login.user);
@@ -49,6 +50,7 @@ function App() {
                <Route path="/write" element={<Write />} />
                <Route path="/category" element={<Category />} />
                <Route path="/user-manage" element={<User />} />
+               <Route path="/profile" element={<Profile auth={auth} />} />
                <Route path="/post-manage" element={<PostManage />} />
                <Route path="*" element={<NotFound />} />
             </Routes>

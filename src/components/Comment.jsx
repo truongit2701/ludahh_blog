@@ -124,7 +124,7 @@ const Comment = () => {
                            width={40}
                         />
                         <div className="user-fullname">
-                           {comment.user.fullName || 'văn trường'}
+                           {comment.user.fullname || 'văn trường'}
                         </div>
                      </div>
                      <p className="comment-content">- {comment.content}</p>
@@ -184,7 +184,7 @@ const Comment = () => {
                                                   width={40}
                                                />
                                                <div className="user-fullname">
-                                                  {childComment.user.fullName ||
+                                                  {childComment.user.fullname ||
                                                      'văn trường'}
                                                </div>
                                             </div>
