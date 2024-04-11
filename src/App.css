@@ -70,6 +70,8 @@ pre {
    border-radius: 10px;
    margin: 8px 0 !important;
    font-size: 1.2em;
+   letter-spacing: 0.1px;
+   overflow-y: scroll;
 }
 
 pre .line::before {

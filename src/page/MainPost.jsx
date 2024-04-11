@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Loading from '../components/Loading';
 import Error from '../components/common/Error';
 import { fetchDetailPost } from '../services/post';
 import '../style/main-post.css';
 import Post from './Post';
+import Loading from '../components/common/Loading';
 
 const MainPost = () => {
    const { id } = useParams();

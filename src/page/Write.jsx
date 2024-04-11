@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
 import Preview from '../components/Preview';
 import Banner from '../components/Write/Banner';
@@ -9,6 +9,8 @@ import { createPost } from '../services/write';
 import '../style/write.css';
 import { toast } from 'react-toastify';
 import { GoFileMedia } from 'react-icons/go';
+import { STORAGE_KEY } from '../common/enum';
+import { saveWritting } from '../common/function';
 
 const Write = () => {
    const [value, setValue] = useState('');
@@ -25,6 +27,8 @@ const Write = () => {
 
    const handleEditorChange = (value) => {
       setValue(value);
+
+      saveWritting(STORAGE_KEY.EDITOR, value);
    };
 
    const openPopup = () => {
@@ -34,6 +38,13 @@ const Write = () => {
    const closePopup = () => {
       setIsOpen(false);
    };
+
+   useEffect(() => {
+      const oldValue =
+         JSON.parse(localStorage.getItem(STORAGE_KEY.EDITOR)) || '';
+
+      setValue(oldValue);
+   }, []);
 
    /**
     * create post

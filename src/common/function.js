@@ -47,3 +47,7 @@ export const formatMonthDay = (serverTime) => {
 export const saveLocalStorage = (key, data) => {
    localStorage.setItem(key, JSON.stringify(data));
 };
+
+export const saveWritting = (key, data) => {
+   localStorage.setItem(key, JSON.stringify(data));
+};

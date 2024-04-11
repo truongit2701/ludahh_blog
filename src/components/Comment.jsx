@@ -8,10 +8,10 @@ import {
    replyComment,
 } from '../services/comment';
 import '../style/comment.css';
-import Loading from './Loading';
 import { adjustTimeToLocal } from '../common';
 import { PAG_TAKE_MINIMUN } from '../common/enum';
 import Pagination from './common/Pagination';
+import Loading from './common/Loading';
 
 const Comment = () => {
    const { id } = useParams();

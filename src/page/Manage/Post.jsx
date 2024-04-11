@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
-import Loading from '../../components/Loading';
 import { fetchAllPost, turnOffPost } from '../../services/post';
 import '../../style/common.css';
+import Loading from '../../components/common/Loading';
 
 const PostManage = () => {
    const [currentPage, setCurrentPage] = useState(1);

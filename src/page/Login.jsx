@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../style/login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../services/auth';
-import Loading from '../components/Loading';
 import { useDispatch, useSelector } from 'react-redux';
+import Loading from '../components/common/Loading';
 
 const Login = () => {
    const auth = useSelector((state) => state.auth.login.user);

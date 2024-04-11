@@ -4,11 +4,11 @@ import { saveLocalStorage } from '../common';
 import { STORAGE_KEY } from '../common/enum';
 import CategoryTag from '../components/CategoryTag';
 import InputSearch from '../components/InputSearch';
-import Loading from '../components/Loading';
 import PostItem from '../components/PostItem';
 import { fetchListPost } from '../services/post';
 import '../style/mainpage.css';
 import Pagination from '../components/common/Pagination';
+import Loading from '../components/common/Loading';
 
 const MainPage = () => {
    const [isFetching, setIsFetching] = useState(false);

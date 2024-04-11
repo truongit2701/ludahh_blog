@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../style/login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { register } from '../services/auth';
-import Loading from '../components/Loading';
+import Loading from '../components/common/Loading';
 
 const Register = () => {
    const [fetching, setFetching] = useState(false);
